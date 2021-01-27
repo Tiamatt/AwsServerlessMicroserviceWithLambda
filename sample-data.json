@@ -1,0 +1,50 @@
+{
+    "sample-data": [
+    {
+    	"title": "Truman Show",
+    	"year": 1998,
+    	"director": {
+              "firstname": "Peter",
+              "lastname": "Weir"
+                },
+    	"country": "United States"
+    },
+    {
+    	"title": "Gone Girl",
+    	"year": 2014,
+    	"director": {
+              "firstname": "David",
+              "lastname": "Fincher"
+                },
+    	"country": "United States"
+    }
+    
+    Insert
+    {
+    	"title": "Godfather",
+    	"year": 1972,
+    		"director": {
+              "firstname": "Francis",
+              "lastname": "Coppola"
+                },
+    	"country": "United States"
+    },
+    {
+    	"title": "Parasite ",
+    	"year": 2019,
+    		"director": {
+              "firstname": "Bong",
+              "lastname": "Joon-ho"
+                },
+    	"country": "South Korea"
+    },
+    {
+    	"title": "Anecdote",
+    	"year": 1989,
+    		"director": {
+              "firstname": "Yefim",
+              "lastname": "Abramov"
+                },
+    	"country": "Azerbaijan"
+    } ]
+}

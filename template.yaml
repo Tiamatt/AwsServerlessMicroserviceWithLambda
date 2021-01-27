@@ -1,0 +1,124 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'SAM Template for ServerlessMicroserviceApp'
+
+
+# ======================== GLOBAL ======================== #
+Globals:
+  Function:
+    Runtime: python3.8
+    Handler: app.lambda_handler
+    Timeout: 60 # default is 3 seconds the function can run before it is stopped
+    Environment:
+      Variables:
+        TABLE_NAME: !Ref MoviesTable
+
+# ======================== RESOURCES ======================== #
+Resources:
+  
+  MoviesApi: 
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+      # DefinitionUri: ./swagger.json
+  
+  CreateMovieFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: 'CreateMovieFunction'
+      CodeUri: create_movie/
+      Policies: # follow the principle of least privilege
+        - DynamoDBCrudPolicy: # AWS SAM policy
+            TableName: !Ref MoviesTable
+        - AWSLambdaBasicExecutionRole
+      Events:
+        CreateMovieApi:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MoviesApi
+            Path: /movie
+            Method: post
+  
+  GetMovieFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: 'GetMovieFunction'
+      CodeUri: get_movie/
+      Policies: # follow the principle of least privilege
+        - DynamoDBCrudPolicy: # AWS SAM policy
+            TableName: !Ref MoviesTable
+        - AWSLambdaBasicExecutionRole
+      Events:
+        CreateMovieApi:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MoviesApi
+            Path: /movie/{uuid}
+            Method: get
+  
+  GetMoviesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: 'GetMoviesFunction'
+      CodeUri: get_movies/
+      Policies: # follow the principle of least privilege
+        - DynamoDBCrudPolicy: # AWS SAM policy
+            TableName: !Ref MoviesTable
+        - AWSLambdaBasicExecutionRole
+      Events:
+        CreateMovieApi:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MoviesApi
+            Path: /movie/list
+            Method: get
+  
+  UpdateMovieFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: 'UpdateMovieFunction'
+      CodeUri: update_movie/
+      Policies: # follow the principle of least privilege
+        - DynamoDBCrudPolicy: # AWS SAM policy
+            TableName: !Ref MoviesTable
+        - AWSLambdaBasicExecutionRole
+      Events:
+        CreateMovieApi:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MoviesApi
+            Path: /movie
+            Method: put
+  
+  DeleteMovieFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: 'DeleteMovieFunction'
+      CodeUri: delete_movie/
+      Policies: # follow the principle of least privilege
+        - DynamoDBCrudPolicy: # AWS SAM policy
+            TableName: !Ref MoviesTable
+        - AWSLambdaBasicExecutionRole
+      Events:
+        CreateMovieApi:
+          Type: Api
+          Properties:
+            RestApiId: !Ref MoviesApi
+            Path: /movie/{uuid}
+            Method: delete
+        
+  MoviesTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      TableName: 'movies-table'
+      PrimaryKey:
+        Name: uuid
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
+Outputs:
+  Api:
+    Description: 'API Gateway endpoint URL'
+    Value: !Sub 'https://${MoviesApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/movie'

@@ -1,0 +1,211 @@
+swagger: '2.0'
+info:
+  description: |
+    This is  a swagger for an AWS serverless microservice built with API Gateway, Lambda and DynamoDB.
+  version: 1.0.0
+  title: Swagger for AWS serverless microservice
+  termsOfService: http://swagger.io/terms/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+tags:
+- name: movie
+  description: CRUD operations for movie domain
+  externalDocs:
+    description: Find out about the project
+    url: https://github.com/Tiamatt/AWSServerlessMicroserviceWithLambda
+# schemes:
+# - https
+paths:
+  /movie/list:
+    get:
+      tags:
+      - movie
+      summary: Get list of all movies 
+      description: Returns a list of all movies
+      operationId: getAllMovies
+      produces:
+      - application/json
+      - application/xml
+      parameters: []
+      responses:
+        200:
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/MovieWithUUID'
+        400:
+          description: Invalid status value        
+  /movie/{uuid}:
+    get:
+      tags:
+      - movie
+      summary: Find a movie by uuid
+      description: Returns a single movie
+      operationId: getMovieByUuid
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: uuid
+        in: path
+        description: UUID of movie to return
+        required: true
+        type: string
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Movie'
+        400:
+          description: Invalid UUID supplied
+        404:
+          description: Movie not found
+    delete:
+      tags:
+      - movie
+      summary: Delete a movie by uuid
+      operationId: deleteMovie
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - name: uuid
+        in: path
+        description: UUID of movie to delete
+        required: true
+        type: string
+      responses:
+        400:
+          description: Invalid UUID supplied
+        404:
+          description: Movie not found
+        200:
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/ApiResponse'  
+  /movie:
+    post:
+      tags:
+      - movie
+      summary: Create a new movie
+      operationId: addMovie
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: Movie object that needs to be added to the db table
+        required: true
+        schema:
+          $ref: '#/definitions/Movie'
+      responses:
+        405:
+          description: Invalid input
+        200:
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/ApiResponse'  
+    put:
+      tags:
+      - movie
+      summary: Update an existing movie
+      operationId: updateMovie
+      consumes:
+      - application/json
+      - application/xml
+      produces:
+      - application/json
+      - application/xml
+      parameters:
+      - in: body
+        name: body
+        description: Movie object that needs to be updated in the db table
+        required: true
+        schema:
+          $ref: '#/definitions/MovieWithUUID'
+      responses:
+        400:
+          description: Invalid data supplied
+        404:
+          description: Movie not found
+        405:
+          description: Validation exception
+        200:
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/ApiResponse'  
+definitions:
+  Director:
+    type: object
+    properties:
+      firstname:
+        type: string
+        example: Francis
+      lastname:
+        type: string
+        example: Coppola
+    xml:
+      name: Director
+  Movie:
+    type: object
+    required:
+    - title
+    - year
+    properties:
+      title:
+        type: string
+        example: Godfather
+      year:
+        type: integer
+        format: int32
+        example: 1972
+      director:
+        $ref: '#/definitions/Director'
+      country:
+        type: string
+        example: United States
+    xml:
+      name: Movie
+  MovieWithUUID:
+    type: object
+    required:
+    - title
+    - year
+    - uuid
+    properties:
+      title:
+        type: string
+        example: Godfather
+      uuid:
+        type: string
+        example: '85367d73-5d4d-11eb-9869-37cbbd80db2c'  
+      year:
+        type: integer
+        format: int32
+        example: 1972
+      director:
+        $ref: '#/definitions/Director'
+      country:
+        type: string
+        example: United States
+    xml:
+      name: Movie
+  ApiResponse:
+    type: object
+    properties:
+      message:
+        type: string    
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+schemes:
+ - https
+# Added by API Auto Mocking Plugin
+host: i1d1vpwy8h.execute-api.us-east-1.amazonaws.com
+basePath: /Prod

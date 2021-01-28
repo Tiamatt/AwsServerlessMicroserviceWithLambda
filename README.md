@@ -1,4 +1,4 @@
-# ServerlessMicroserviceApp
+# AWS Serverless Microservice With Lambda Application
 
 This project is a simple serverless microservice on AWS that enables users to create and manage movies data. The entire backend is based on API Gateway, Lambda and DynamoDB. To manage, document and visualize all APIs in one place, SwaggerHub is used.
 
@@ -6,9 +6,9 @@ This project is a simple serverless microservice on AWS that enables users to cr
 
 ## **Overview**
 
-The goal of this project is to learn how to create an application composed of small, easily deployable, loosely coupled, independently scalable, serverless components.
+The goal of this project is to show how to create an application composed of small, easily deployable, loosely coupled, independently scalable, serverless components.
 
-As I’m strongly against managing environments manually and take Infrastructure as Code for granted, AWS SAM will be a great fit for our serverless application. As a result, the entire application should be deployed in any AWS account with a single CloudFormation template.
+As I’m strongly against managing environments manually and take **Infrastructure as Code** :blue_heart: for granted, AWS SAM will be a great fit for this serverless project. As a result, the entire application should be deployed in any AWS account with a single CloudFormation template.
 
 ## **Architecture**
 
@@ -24,9 +24,10 @@ The high-level architecture for the serverless microservice is illustrated in th
 
 ![Architecture](readme-images/i-2.png)
 
+
 ## **Initial Setup**
 
-To codify, build, package, deploy, and manage our AWS resources in a fully automated fashion, you need to install:
+To codify, build, package, deploy, and manage our AWS resources in a fully automated fashion, we will use:
 
 :point_right: AWS SAM
 
@@ -97,7 +98,7 @@ Lambda functions are written on Python 3.8.
 
 ## **Article**
 
-You can find all the details and step by step explanation of the project by reading my articles:
+You can find all the details of the project by reading my articles on dev.to:
 
 :point_right: **AWS project - Building a serverless microservice with Lambda**
 
@@ -122,6 +123,6 @@ aws cloudformation delete-stack --stack-name aws-serverless-microservice-app-sta
 
 ## **Happy dance**
 
-Finally, time for happy dance!
+Finally, don't forget to do your happy dance!
 
 ![UpdateMovie](readme-images/meme-joker-dance.png)

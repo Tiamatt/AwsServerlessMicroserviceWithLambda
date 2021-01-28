@@ -116,7 +116,7 @@ git clone https://github.com/Tiamatt/AwsServerlessMicroserviceWithLambda.git
 
 If you want to migrating a repository from GitHub into AWS CodeCommit, read [this](https://dev.to/tiamatt/migrating-a-repository-from-github-into-aws-codecommit-via-aws-cli-2ne4) article.
 
-## **Deploy **
+## **Build and Deploy**
 
 To build and deploy your application for the first time, run the following in your shell:
 

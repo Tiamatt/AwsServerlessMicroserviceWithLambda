@@ -27,7 +27,7 @@ The high-level architecture for the serverless microservice is illustrated in th
 
 ## **Initial Setup**
 
-To codify, build, package, deploy, and manage our AWS resources in a fully automated fashion, we will use:
+To codify, build, package, deploy, and manage our AWS resources in a fully automated fashion, use the following:
 
 :point_right: AWS SAM
 
@@ -96,15 +96,27 @@ Lambda functions are written on Python 3.8.
 ![UpdateMovie](readme-images/i-21.png)
 
 
-## **Article**
+## **A detailed explanation**
 
-You can find all the details of the project by reading my articles on dev.to:
+You can find all the details of the project by reading my articles on `dev.to`:
 
-:point_right: **AWS project - Building a serverless microservice with Lambda**
+:point_right: **AWS project - Building a serverless microservice with Lambda** [(read)](https://dev.to/tiamatt/aws-project-building-a-serverless-microservice-with-lambda-1pa3)
 
 :point_right: **Serverless - Create, debug and deploy Lambda and API Gateway via AWS SAM and AWS Cloud9** [(read)](https://dev.to/tiamatt/serverless-create-debug-and-deploy-lambda-and-api-gateway-via-aws-sam-and-aws-cloud9-5158)
 
-## **Deploy**
+
+## **Download the project**
+
+To clone the GitHub repository, execute the following command:
+
+```YAML
+cd my-folder
+git clone https://github.com/Tiamatt/AwsServerlessMicroserviceWithLambda.git
+```
+
+If you want to migrating a repository from GitHub into AWS CodeCommit, read [this](https://dev.to/tiamatt/migrating-a-repository-from-github-into-aws-codecommit-via-aws-cli-2ne4) article.
+
+## **Deploy **
 
 To build and deploy your application for the first time, run the following in your shell:
 

@@ -2,7 +2,7 @@
 
 This project is a simple serverless microservice on AWS that enables users to create and manage movies data. The entire backend is based on API Gateway, Lambda and DynamoDB. To manage, document and visualize all APIs in one place, SwaggerHub is used.
 
-![SwaggerHub UI](readme-image/i-1.png)
+![SwaggerHub UI](readme-images/i-1.png)
 
 ## **Overview**
 
@@ -19,7 +19,7 @@ As I’m strongly against managing environments manually and take Infrastructure
 
 The high-level architecture for the serverless microservice is illustrated in the diagram below:
 
-![Architecture](readme-image/i-2.png)
+![Architecture](readme-images/i-2.png)
 
 ## **Initial Setup**
 
@@ -48,40 +48,40 @@ Lambda functions are written on Python 3.8.
 
 ## **Demo**
 
-![SwaggerHub](readme-image/i-11.png)
+![SwaggerHub](readme-images/i-11.png)
 
 :tada: Create a new movie:
 
-![CreateMovie](readme-image/i-10.png)
+![CreateMovie](readme-images/i-10.png)
 
-![CreateMovie](readme-image/i-12.png)
+![CreateMovie](readme-images/i-12.png)
 
 :tada: Get a list of all movies:
 
-![GetMovies](readme-image/i-13.png)
+![GetMovies](readme-images/i-13.png)
 
-![GetMovies](readme-image/i-14.png)
+![GetMovies](readme-images/i-14.png)
 
 :tada: Get a movie by uuid:
 
-![GetMovie](readme-image/i-15.png)
+![GetMovie](readme-images/i-15.png)
 
-![GetMovie](readme-image/i-16.png)
+![GetMovie](readme-images/i-16.png)
 
 
 :tada: Delete a movie by uuid:
 
-![DeleteMovie](readme-image/i-17.png)
+![DeleteMovie](readme-images/i-17.png)
 
-![DeleteMovie](readme-image/i-18.png)
+![DeleteMovie](readme-images/i-18.png)
 
 :tada: And finally, let's update an existing movie:
 
-![UpdateMovie](readme-image/i-19.png)
+![UpdateMovie](readme-images/i-19.png)
 
-![UpdateMovie](readme-image/i-20.png)
+![UpdateMovie](readme-images/i-20.png)
 
-![UpdateMovie](readme-image/i-21.png)
+![UpdateMovie](readme-images/i-21.png)
 
 
 ## **Article**
@@ -111,4 +111,4 @@ aws cloudformation delete-stack --stack-name aws-serverless-microservice-app-sta
 
 ## **Happy dance**
 
-![UpdateMovie](readme-image/meme-joker-dance.png)
+![UpdateMovie](readme-images/meme-joker-dance.png)
